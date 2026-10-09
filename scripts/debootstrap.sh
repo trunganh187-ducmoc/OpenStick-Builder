@@ -5,7 +5,7 @@ CONFIG="$1"
 [ -n "$CONFIG" ] && [ -f "$CONFIG" ] && . "$CONFIG"
 
 CHROOT=${CHROOT=$(pwd)/rootfs}
-# Khoa mac dinh sang bookworm (Debian 12) de tranh loi libconfig9 tren Debian 13
+# Khoa mac dinh sang bookworm (Debian 12) de tranh loi libconfig9
 RELEASE=${ROOTFS_RELEASE:-${RELEASE:-bookworm}}
 HOST_NAME=${HOST_NAME=openstick-debian}
 
@@ -49,7 +49,7 @@ cp -a configs/system/* ${CHROOT}/etc/systemd/system
 
 cp -a scripts/msm-firmware-loader.sh ${CHROOT}/usr/sbin
 
-# setup NetworkManager (nap tat ca cac profile mang da tao)
+# setup NetworkManager
 mkdir -p ${CHROOT}/etc/NetworkManager/system-connections
 cp configs/*.nmconnection ${CHROOT}/etc/NetworkManager/system-connections/ 2>/dev/null || true
 chmod 0600 ${CHROOT}/etc/NetworkManager/system-connections/* 2>/dev/null || true
